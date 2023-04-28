@@ -4,6 +4,7 @@ import { Container } from '../../components/elements/backdropContainer/backdropC
 import { ContainerUtils } from '../../components/elements/utilsContainer/utilsContainer.styled';
 import { Title } from 'components/elements/title/title.styled';
 import { Form, Label, Input } from '../../components/elements/form/form.styled';
+import LinkTo from '../../components/elements/linkTo/linkTo';
 import ButtonCommon from 'components/elements/button/button';
 
 export default function SignUp() {
@@ -54,13 +55,14 @@ export default function SignUp() {
               type="password"
               name="password"
               placeholder="Password"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+              // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
               title="The password length must be greater than or equal to 8 and less or equal to 16, at least one lowercase letter & one uppercase letter, at least one numeric & one special symbol(!@#$%^&*=+-_) "
               required
             />
           </Label>
           <ButtonCommon titleButton="Sign Up" />
         </Form>
+        <LinkTo path={'/signin'} text="Already have an account? Sign in" />
       </ContainerUtils>
     </Container>
   );

@@ -5,6 +5,7 @@ import { ContainerUtils } from '../../components/elements/utilsContainer/utilsCo
 import { Title } from 'components/elements/title/title.styled';
 import { Form, Label, Input } from '../../components/elements/form/form.styled';
 import ButtonCommon from 'components/elements/button/button';
+import LinkTo from '../../components/elements/linkTo/linkTo';
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export default function SignIn() {
           </Label>
           <ButtonCommon titleButton="Sign In" />
         </Form>
+        <LinkTo path={'/signup'} text="No account? Sign up" />
       </ContainerUtils>
     </Container>
   );

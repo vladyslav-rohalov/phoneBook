@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { SERVER_URL } from 'constants/constants';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = SERVER_URL;
 
 const token = {
   set(token) {
@@ -13,11 +14,38 @@ const token = {
 };
 
 const signUp = createAsyncThunk(
-  '/auth/signup',
+  '/auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
+      const response = await axios.post('/auth/register', credentials);
       token.set(response.data.token);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+const verifyEmail = createAsyncThunk(
+  '/auth/verify',
+  async (verificationToken, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        `/auth/verify/${verificationToken}`,
+        verificationToken
+      );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+const resendVerifyEmail = createAsyncThunk(
+  '/auth/verify',
+  async (email, thunkAPI) => {
+    try {
+      const response = await axios.post(`/auth/verify`, email);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -29,7 +57,7 @@ const signIn = createAsyncThunk(
   '/auth/login',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/login', credentials);
+      const response = await axios.post('/auth/login', credentials);
       token.set(response.data.token);
       return response.data;
     } catch (e) {
@@ -40,14 +68,14 @@ const signIn = createAsyncThunk(
 
 const signOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/auth/logout');
     token.unSet();
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
 
-const refreshUser = createAsyncThunk('/auth/refresh', async (_, thunkAPI) => {
+const refreshUser = createAsyncThunk('/auth/current', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
   if (persistedToken === null) {
@@ -55,13 +83,20 @@ const refreshUser = createAsyncThunk('/auth/refresh', async (_, thunkAPI) => {
   }
   try {
     token.set(persistedToken);
-    const response = await axios.get('/users/current');
+    const response = await axios.get('/auth/current');
     return response.data;
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
 
-const authOperations = { refreshUser, signUp, signIn, signOut };
+const authOperations = {
+  refreshUser,
+  signUp,
+  signIn,
+  signOut,
+  verifyEmail,
+  resendVerifyEmail,
+};
 
 export default authOperations;
