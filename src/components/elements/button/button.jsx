@@ -1,10 +1,9 @@
-import { Button, IconButton } from './button.styled';
+import { Button } from './button.styled';
 
-export default function ButtonCommon({ titleButton }) {
+export default function ButtonCommon({ titleButton, handleClick }) {
   return (
-    <Button type="submit">
+    <Button type="submit" onClick={handleClick}>
       {titleButton}&nbsp;
-      <IconButton />
     </Button>
   );
 }

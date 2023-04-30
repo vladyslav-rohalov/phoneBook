@@ -1,26 +1,30 @@
 import styled from '@emotion/styled/macro';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 8em;
-  height: 2em;
-  margin: 0 auto;
-  background: linear-gradient(90deg, #ee82ee 0%, #673ab7 50%, #9c27b0 100%);
+  width: 10em;
+  height: 2.5em;
+  margin: 0 auto 2em;
+  background-image: linear-gradient(
+    to right,
+    #6441a5 0%,
+    #2a0845 51%,
+    #6441a5 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  text-transform: uppercase;
+  color: #ffffff;
   cursor: pointer;
   border: none;
   border-radius: 0.25em;
   box-shadow: 0 0 0.5em #333;
   transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 0.25em #111;
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-position: right center;
+    color: #ffffff;
+    text-decoration: none;
   }
-`;
-
-export const IconButton = styled(BsFillArrowRightCircleFill)`
-  fill: #ffffffcc;
 `;

@@ -18,37 +18,43 @@ const signUp = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post('/auth/register', credentials);
-      token.set(response.data.token);
+      // token.set(response.data.token);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
 
 const verifyEmail = createAsyncThunk(
-  '/auth/verify',
+  '/auth/verify/',
   async (verificationToken, thunkAPI) => {
     try {
-      const response = await axios.post(
-        `/auth/verify/${verificationToken}`,
-        verificationToken
-      );
+      const response = await axios.post('/auth/verify', verificationToken);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
 
 const resendVerifyEmail = createAsyncThunk(
-  '/auth/verify',
+  '/auth/resend',
   async (email, thunkAPI) => {
     try {
-      const response = await axios.post(`/auth/verify`, email);
+      const response = await axios.post(`/auth/resend`, email);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
@@ -61,7 +67,10 @@ const signIn = createAsyncThunk(
       token.set(response.data.token);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
@@ -71,7 +80,10 @@ const signOut = createAsyncThunk('/auth/logout', async (_, thunkAPI) => {
     await axios.post('/auth/logout');
     token.unSet();
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue({
+      status: e.response.status,
+      message: e.response.data.message,
+    });
   }
 });
 
@@ -86,7 +98,10 @@ const refreshUser = createAsyncThunk('/auth/current', async (_, thunkAPI) => {
     const response = await axios.get('/auth/current');
     return response.data;
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue({
+      status: e.response.status,
+      message: e.response.data.message,
+    });
   }
 });
 

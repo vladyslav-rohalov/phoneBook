@@ -1,16 +1,16 @@
 import { useAuth } from 'hooks/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 
-export default function RestrictedRoute({
+export default function VerificationRoute({
   component: Component,
-  redirectTo = '/home',
+  redirectTo = '/signin',
 }) {
-  const { isLoggedIn } = useAuth();
+  const { isVerify } = useAuth();
+  //   console.log(
+  //     `VerificationRoute isVerify ###${isVerify}### redirect to /signin`
+  //   );
   const location = useLocation();
-  // console.log(
-  //   `restrictedRoute isLoggedIn ###${isLoggedIn}### redirect to Home`
-  // );
-  return isLoggedIn ? (
+  return isVerify ? (
     <Navigate to={location.state?.from ?? redirectTo} />
   ) : (
     Component

@@ -7,7 +7,8 @@ import authOperations from 'Redux/auth/operations';
 import SharedLayout from './sharedLayout/sharedLayout';
 import PrivateRoute from './redirect/privateRoutes';
 import RestrictedRoute from './redirect/restrictedRoutes';
-import VerificationRoute from './redirect/verificationRoutes';
+import VerificationCodeRoute from './redirect/verificationCodeRoutes';
+import VerificationRoute from './redirect/verificationRoute';
 
 const ScreenLock = lazy(() => import('../pages/screenLock/screenLock'));
 const Home = lazy(() => import('../pages/home/home'));
@@ -23,6 +24,7 @@ const Verify = lazy(() => import('../pages/verifyEmail/verifyEmail'));
 const AddNewContact = lazy(() =>
   import('../pages/addNewContact/addNewContact')
 );
+const PageNotFound = lazy(() => import('../pages/404/404'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -39,25 +41,25 @@ export default function App() {
           <Route index element={<ScreenLock />} />
           <Route
             path="home"
-            element={<PrivateRoute redirectTo="/signup" component={<Home />} />}
+            element={<PrivateRoute redirectTo="/signin" component={<Home />} />}
           />
           <Route
             path="phonebook"
             element={
-              <PrivateRoute redirectTo="/signup" component={<Phonebook />} />
+              <PrivateRoute redirectTo="/signin" component={<Phonebook />} />
             }
           />
           <Route
             path="phonebook/:id"
             element={
-              <PrivateRoute redirectTo="/signup" component={<ContactInfo />} />
+              <PrivateRoute redirectTo="/signin" component={<ContactInfo />} />
             }
           />
           <Route
             path="add"
             element={
               <PrivateRoute
-                redirectTo="/signup"
+                redirectTo="/signin"
                 component={<AddNewContact />}
               />
             }
@@ -66,7 +68,7 @@ export default function App() {
             path="edit/:id"
             element={
               <PrivateRoute
-                redirectTo="/signup"
+                redirectTo="/signin"
                 component={<EditNewContact />}
               />
             }
@@ -74,25 +76,25 @@ export default function App() {
           <Route
             path="youtube"
             element={
-              <PrivateRoute redirectTo="/signup" component={<Youtube />} />
+              <PrivateRoute redirectTo="/signin" component={<Youtube />} />
             }
           />
           <Route
             path="filmoteka"
             element={
-              <PrivateRoute redirectTo="/signup" component={<Filmoteka />} />
+              <PrivateRoute redirectTo="/signin" component={<Filmoteka />} />
             }
           />
           <Route
             path="camera"
             element={
-              <PrivateRoute redirectTo="/signup" component={<Camera />} />
+              <PrivateRoute redirectTo="/signin" component={<Camera />} />
             }
           />
           <Route
             path="verify"
             element={
-              <RestrictedRoute redirectTo="/home" component={<Verify />} />
+              <VerificationRoute redirectTo="/signin" component={<Verify />} />
             }
           />
           <Route
@@ -104,9 +106,13 @@ export default function App() {
           <Route
             path="signup"
             element={
-              <VerificationRoute redirectTo="/verify" component={<SignUp />} />
+              <VerificationCodeRoute
+                redirectTo="/verify"
+                component={<SignUp />}
+              />
             }
           />
+          <Route path="404" element={<PageNotFound />} />
         </Route>
       </Routes>
     )
