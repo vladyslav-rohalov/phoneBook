@@ -9,7 +9,7 @@ import { Form, Label, Input } from '../../components/elements/form/form.styled';
 import LinkTo from '../../components/elements/linkTo/linkTo';
 import ButtonCommon from 'components/elements/button/button';
 import { Toaster } from 'react-hot-toast';
-import { notifyError, notifySucces } from 'helpers/notify';
+import { notifyError } from 'helpers/notify';
 
 export default function SignUp() {
   const dispatch = useDispatch();
