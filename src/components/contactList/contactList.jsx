@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import {
   selectContacts,
   selectIsLoading,
-  selectError,
+  // selectError,
   selectFilteredContacts,
 } from 'Redux/Selectors';
 import { useEffect } from 'react';
@@ -14,13 +14,13 @@ import {
   ListItem,
   LinkStyled,
 } from './contactList.styled';
-import Error from 'components/error/error';
+// import Error from 'components/error/error';
 import { SkeletonList } from 'components/skeleton/skeleton';
 
 export default function ContactList() {
   const items = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  // const error = useSelector(selectError);
   const dispatch = useDispatch();
   const filtredContacts = useSelector(selectFilteredContacts);
   const location = useLocation();
@@ -32,13 +32,13 @@ export default function ContactList() {
   return (
     <ContactsContainer>
       {isLoading && <SkeletonList />}
-      {error && <Error />}
+      {/* {error && <Error />} */}
       {items.length > 0 && (
         <List>
-          {filtredContacts.map(({ id, name }) => {
+          {filtredContacts.map(({ _id, name }) => {
             return (
-              <ListItem key={id}>
-                <LinkStyled to={`/phonebook/${id}`} state={{ from: location }}>
+              <ListItem key={_id}>
+                <LinkStyled to={`/phonebook/${_id}`} state={{ from: location }}>
                   {name}
                 </LinkStyled>
               </ListItem>

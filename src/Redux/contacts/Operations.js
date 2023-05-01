@@ -1,17 +1,23 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { SERVER_URL } from 'constants/constants';
+
+axios.defaults.baseURL = SERVER_URL;
 
 // axios.defaults.baseURL = 'https://6405eac6eed195a99f90a28a.mockapi.io';
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 export const fetchContacts = createAsyncThunk(
   '/contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
       const response = await axios.get('/contacts');
-      return response.data;
+      return { data: response.data, status: response.request.status };
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
@@ -21,9 +27,12 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       const response = await axios.post('/contacts', contact);
-      return response.data;
+      return { data: response.data, status: response.request.status };
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
@@ -33,9 +42,12 @@ export const delContact = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${id}`);
-      return response.data;
+      return { data: response.data, status: response.request.status };
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );
@@ -48,9 +60,12 @@ export const editContact = createAsyncThunk(
         name,
         number,
       });
-      return response.data;
+      return { data: response.data, status: response.request.status };
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
     }
   }
 );

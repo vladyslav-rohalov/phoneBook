@@ -9,7 +9,8 @@ import {
 const initialState = {
   items: [],
   isLoading: false,
-  error: null,
+  status: null,
+  error: { status: null, message: null },
 };
 
 const handlePending = state => {
@@ -34,27 +35,30 @@ const contactsSlice = createSlice({
     [delContact.rejected]: handleRejected,
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
+      state.error = { status: null, message: null };
+      state.items = action.payload.data;
+      state.status = action.payload.status;
     },
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
-      state.error = null;
-      state.items.push(action.payload);
+      state.error = { status: null, message: null };
+      state.items.push(action.payload.data);
+      state.status = action.payload.status;
     },
     [editContact.fulfilled](state, action) {
       state.isLoading = false;
-      state.error = null;
+      state.status = action.payload.status;
+      state.error = { status: null, message: null };
       const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
+        contact => contact.id === action.payload.data.id
       );
-      state.items.splice(index, 1, action.payload);
+      state.items.splice(index, 1, action.payload.data);
     },
     [delContact.fulfilled](state, action) {
       state.isLoading = false;
-      state.error = null;
+      state.error = { status: null, message: null };
       const index = state.items.findIndex(
-        contact => contact.id === action.payload.id
+        contact => contact.id === action.payload.data.id
       );
       state.items.splice(index, 1);
     },

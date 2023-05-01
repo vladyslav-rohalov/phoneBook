@@ -4,10 +4,10 @@ import ButtonCommon from 'components/elements/button/button';
 import { Form, Label, Input } from '../elements/form/form.styled';
 import {
   ContainerForm,
-  // InputHidden,
-  // ButtonAvatar,
-  // AvatarIcon,
-  // UploadIcon,
+  InputHidden,
+  ButtonAvatar,
+  AvatarIcon,
+  UploadIcon,
 } from './contactAddEdit.styled';
 
 export default function ContactAddEdit({
@@ -16,9 +16,9 @@ export default function ContactAddEdit({
   handleSubmit,
   name,
   phone,
-  // handlePick,
-  // avatarPicker,
-  // email,
+  handlePick,
+  avatarPicker,
+  email,
 }) {
   return (
     <ContainerUtils>
@@ -26,7 +26,7 @@ export default function ContactAddEdit({
       <ContainerForm>
         <Form onSubmit={handleSubmit}>
           {/* ========== Avatar ========== */}
-          {/* <Label>
+          <Label>
             <ButtonAvatar onClick={handlePick} type="button">
               <AvatarIcon />
               <UploadIcon />
@@ -37,7 +37,7 @@ export default function ContactAddEdit({
               name="avatar"
               accept="image/*,.png,.jpeg,.webp"
             />
-          </Label> */}
+          </Label>
           {/* ========== Avatar ========== */}
           <Label>
             <Input
@@ -60,8 +60,7 @@ export default function ContactAddEdit({
               required
             />
           </Label>
-          {/* ========== Email ========== */}
-          {/* <Label>
+          <Label>
             <Input
               type="email"
               name="email"
@@ -70,8 +69,7 @@ export default function ContactAddEdit({
               pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
               title="The email address must be set to letters and contain @, it must not contain spaces, dashes, or parentheses. "
             />
-          </Label> */}
-          {/* ========== Email ========== */}
+          </Label>
           <ButtonCommon titleButton={titleButton} />
         </Form>
       </ContainerForm>
