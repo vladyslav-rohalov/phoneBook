@@ -52,13 +52,29 @@ export const delContact = createAsyncThunk(
   }
 );
 
+export const updateStatusContact = createAsyncThunk(
+  'contact/updateStatusContact',
+  async ({ id, favorite }, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/contacts/${id}/favorite`, favorite);
+      return { data: response.data, status: response.request.status };
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
+    }
+  }
+);
+
 export const editContact = createAsyncThunk(
   'contact/editContact',
-  async ({ id, name, number }, thunkAPI) => {
+  async ({ id, name, number, email }, thunkAPI) => {
     try {
       const response = await axios.patch(`/contacts/${id}`, {
         name,
         number,
+        email,
       });
       return { data: response.data, status: response.request.status };
     } catch (e) {

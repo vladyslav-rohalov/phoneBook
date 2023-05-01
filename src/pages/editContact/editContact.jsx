@@ -25,12 +25,12 @@ export default function EditContact() {
     const form = e.target;
     const name = form.elements.name.value;
     const number = form.elements.number.value;
-    // const email = form.elements.email.value;
+    const email = form.elements.email.value;
     const contact = {
       id: id,
       name: name,
       number: number,
-      // email: email,
+      email: email,
     };
     dispatch(editContact(contact));
     navigate('/phonebook', { replace: true });
@@ -46,7 +46,7 @@ export default function EditContact() {
           handleSubmit={handleSubmit}
           name={contact.name}
           phone={contact.number}
-          // email={contact.email}
+          email={contact.email}
         />
       )}
     </Container>

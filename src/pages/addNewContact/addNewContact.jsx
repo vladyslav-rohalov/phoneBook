@@ -40,13 +40,11 @@ export default function AddNewContact() {
       email: email,
     };
     dispatch(addContact(contact));
-    console.log(formData);
-    // await form.reset();
+    // form.reset();
   };
 
-  const handlePick = e => {
+  const handlePick = () => {
     avatarPicker.current.click();
-    console.log(e);
   };
 
   return (

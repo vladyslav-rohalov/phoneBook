@@ -4,6 +4,7 @@ import {
   addContact,
   delContact,
   editContact,
+  updateStatusContact,
 } from './Operations';
 
 const initialState = {
@@ -29,10 +30,12 @@ const contactsSlice = createSlice({
     [addContact.pending]: handlePending,
     [editContact.pending]: handlePending,
     [delContact.pending]: handlePending,
+    [updateStatusContact.pending]: handlePending,
     [fetchContacts.rejected]: handleRejected,
     [addContact.rejected]: handleRejected,
     [editContact.rejected]: handleRejected,
     [delContact.rejected]: handleRejected,
+    [updateStatusContact.pending]: handleRejected,
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = { status: null, message: null };
@@ -46,6 +49,15 @@ const contactsSlice = createSlice({
       state.status = action.payload.status;
     },
     [editContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.status = action.payload.status;
+      state.error = { status: null, message: null };
+      const index = state.items.findIndex(
+        contact => contact.id === action.payload.data.id
+      );
+      state.items.splice(index, 1, action.payload.data);
+    },
+    [updateStatusContact.fulfilled](state, action) {
       state.isLoading = false;
       state.status = action.payload.status;
       state.error = { status: null, message: null };

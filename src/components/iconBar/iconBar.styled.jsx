@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { BiPhone } from 'react-icons/bi';
-import { AiOutlineMessage } from 'react-icons/ai';
-import { FiMail } from 'react-icons/fi';
+import { AiFillStar } from 'react-icons/ai';
+import { CiMail } from 'react-icons/ci';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { AiOutlineEdit } from 'react-icons/ai';
 
@@ -29,15 +29,14 @@ export const ButtonPhone = styled.button`
   background-color: #3ad364;
 `;
 
-export const ButtonMessage = styled.button`
+export const ButtonFavorite = styled.button`
   ${buttonStyle}
-  background-color: #41a1ef;
-  opacity: 0.3;
+  background-color: #ffffff;
 `;
 
 export const ButtonMail = styled.button`
   ${buttonStyle}
-  background-color: #ffffff;
+  background-color: #41a1ef;
 `;
 
 export const ButtonEdit = styled.button`
@@ -68,11 +67,12 @@ export const IconPhone = styled(BiPhone)`
   ${IconStyle}
 `;
 
-export const IconMessage = styled(AiOutlineMessage)`
+export const IconFavorite = styled(AiFillStar)`
   ${IconStyle}
+  fill: ${props => props.fill};
 `;
 
-export const IconMail = styled(FiMail)`
+export const IconMail = styled(CiMail)`
   ${IconStyle}
 `;
 

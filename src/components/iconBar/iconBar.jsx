@@ -2,21 +2,25 @@ import { useLocation } from 'react-router-dom';
 import {
   Container,
   ButtonPhone,
-  ButtonMessage,
+  ButtonFavorite,
   ButtonMail,
   ButtonEdit,
   ButtonDelete,
   LinkStyled,
   TagA,
   IconPhone,
-  IconMessage,
+  IconFavorite,
   IconMail,
   IconEdit,
   IconDelete,
 } from './iconBar.styled';
 
-export default function IconBar({ contact, onDelClick, id }) {
+export default function IconBar({ contact, onDelClick, id, onFavoriteClick }) {
   const location = useLocation();
+  const fill = () => {
+    return contact.favorite ? '#EDDF0F' : '#DDDDDC';
+  };
+
   return (
     <Container>
       <TagA href={`tel:${contact.phone}`}>
@@ -25,9 +29,9 @@ export default function IconBar({ contact, onDelClick, id }) {
         </ButtonPhone>
       </TagA>
       <LinkStyled>
-        <ButtonMessage type="button" disabled>
-          <IconMessage />
-        </ButtonMessage>
+        <ButtonFavorite type="button" onClick={onFavoriteClick}>
+          <IconFavorite fill={fill()} />
+        </ButtonFavorite>
       </LinkStyled>
       <TagA href={`mailto:${contact.email}`}>
         <ButtonMail type="button">
