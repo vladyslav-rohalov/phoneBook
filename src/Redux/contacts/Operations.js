@@ -69,11 +69,11 @@ export const updateStatusContact = createAsyncThunk(
 
 export const editContact = createAsyncThunk(
   'contact/editContact',
-  async ({ id, name, number, email }, thunkAPI) => {
+  async ({ id, name, phone, email }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/contacts/${id}`, {
+      const response = await axios.put(`/contacts/${id}`, {
         name,
-        number,
+        phone,
         email,
       });
       return { data: response.data, status: response.request.status };

@@ -43,7 +43,7 @@ export default function ContactInfo() {
           <ContactDetails>
             <ContactAvatar src={contact.avatarURL} alt="avatar" />
             <ContactName>{contact.name}</ContactName>
-            <ContactPhoneMail>{contact.number}</ContactPhoneMail>
+            <ContactPhoneMail>{contact.phone}</ContactPhoneMail>
             <ContactPhoneMail>{contact.email}</ContactPhoneMail>
             <IconBar
               contact={contact}

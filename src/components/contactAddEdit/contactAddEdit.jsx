@@ -52,7 +52,7 @@ export default function ContactAddEdit({
           <Label>
             <Input
               type="tel"
-              name="number"
+              name="phone"
               defaultValue={phone}
               placeholder="Phone number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
