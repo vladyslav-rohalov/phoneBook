@@ -4,9 +4,6 @@ import { SERVER_URL } from 'constants/constants';
 
 axios.defaults.baseURL = SERVER_URL;
 
-// axios.defaults.baseURL = 'https://6405eac6eed195a99f90a28a.mockapi.io';
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
 export const fetchContacts = createAsyncThunk(
   '/contacts/fetchAll',
   async (_, thunkAPI) => {
@@ -24,9 +21,13 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contact/addContact',
-  async (contact, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const response = await axios.post('/contacts', contact);
+      const response = await axios.post('/contacts', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return { data: response.data, status: response.request.status };
     } catch (e) {
       return thunkAPI.rejectWithValue({

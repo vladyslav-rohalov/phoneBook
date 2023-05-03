@@ -17,6 +17,7 @@ export default function EditContact() {
   const { contacts } = useContacts();
   const contact = contacts.find(item => item._id === id);
   const navigate = useNavigate();
+  const avatarPicker = useRef(null);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -38,6 +39,10 @@ export default function EditContact() {
     const name = form.elements.name.value;
     const phone = form.elements.phone.value;
     const email = form.elements.email.value;
+    const avatarURL = form.elements.avatar.files[0];
+    const formData = new FormData();
+    formData.append('path', avatarURL);
+
     const contact = {
       id: id,
       name: name,
@@ -46,6 +51,10 @@ export default function EditContact() {
     };
     dispatch(editContact(contact));
     // form.reset();
+  };
+
+  const handlePick = () => {
+    avatarPicker.current.click();
   };
 
   return (
@@ -59,6 +68,8 @@ export default function EditContact() {
           name={contact.name}
           phone={contact.phone}
           email={contact.email}
+          handlePick={handlePick}
+          avatarPicker={avatarPicker}
         />
       )}
     </Container>

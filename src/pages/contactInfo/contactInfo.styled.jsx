@@ -23,6 +23,9 @@ export const ContactAvatar = styled.img`
   border-radius: 50%;
   border: 3px solid #c272ce;
   margin: 0 auto 1.25em;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 `;
 
 export const ContactName = styled.h1`
