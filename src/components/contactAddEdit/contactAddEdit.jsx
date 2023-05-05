@@ -1,7 +1,11 @@
-import { ContainerUtils } from '../elements/utilsContainer/utilsContainer.styled';
-import { Title } from '../elements/title/title.styled';
-import ButtonCommon from 'components/elements/button/button';
-import { Form, Label, Input } from '../elements/form/form.styled';
+import {
+  ContainerUtils,
+  Title,
+  ButtonCommon,
+  Form,
+  Label,
+  Input,
+} from '../elements';
 import {
   ContainerForm,
   InputHidden,
@@ -25,7 +29,6 @@ export default function ContactAddEdit({
       <Title>{title}</Title>
       <ContainerForm>
         <Form onSubmit={handleSubmit}>
-          {/* ========== Avatar ========== */}
           <Label>
             <ButtonAvatar onClick={handlePick} type="button">
               <AvatarIcon />
@@ -38,7 +41,6 @@ export default function ContactAddEdit({
               accept="image/*,.png,.jpeg,.webp"
             />
           </Label>
-          {/* ========== Avatar ========== */}
           <Label>
             <Input
               type="text"

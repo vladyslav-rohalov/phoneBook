@@ -1,6 +1,6 @@
 import { Container, Frame } from './filmoteka.styled';
 
-export default function Google() {
+export default function Filmoteka() {
   return (
     <Container>
       <Frame

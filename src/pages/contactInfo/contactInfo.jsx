@@ -7,9 +7,8 @@ import {
   delContact,
   updateStatusContact,
 } from 'Redux/contacts/Operations';
-import { Container } from '../../components/elements/backdropContainer/backdropContainer.styled';
-import IconBar from 'components/iconBar/iconBar';
-// import Error from 'components/error/error';
+import { Container } from '../../components/elements';
+import { IconBar } from 'components';
 import {
   ContactContainer,
   ContactDetails,
@@ -24,8 +23,6 @@ export default function ContactInfo() {
   const { contacts } = useContacts();
   const contact = contacts.find(item => item._id === id);
 
-  // const error = useSelector(selectError);
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -38,7 +35,6 @@ export default function ContactInfo() {
   return (
     <Container>
       <ContactContainer>
-        {/* {error && <Error />} */}
         {contact && (
           <ContactDetails>
             <ContactAvatar src={contact.avatarURL} alt="avatar" />

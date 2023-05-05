@@ -118,6 +118,7 @@ export const BackBar = styled.div`
 export const Button = styled.button`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 const buttonStyle = `fill: #ffffffcc;
 width: 1.5em;

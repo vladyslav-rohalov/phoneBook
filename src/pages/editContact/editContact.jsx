@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchContacts, editContact } from 'Redux/contacts/Operations';
 import { useParams } from 'react-router-dom';
-import { Container } from '../../components/elements/backdropContainer/backdropContainer.styled';
+import { Container } from 'components/elements/';
 import { Toaster } from 'react-hot-toast';
 import { notifyError, notifySucces } from 'helpers/notify';
-import ContactAddEdit from 'components/contactAddEdit/contactAddEdit';
+import { ContactAddEdit } from 'components';
 
 export default function EditContact() {
   const dispatch = useDispatch();
@@ -36,20 +36,12 @@ export default function EditContact() {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const name = form.elements.name.value;
-    const phone = form.elements.phone.value;
-    const email = form.elements.email.value;
-    const avatarURL = form.elements.avatar.files[0];
     const formData = new FormData();
-    formData.append('path', avatarURL);
-
-    const contact = {
-      id: id,
-      name: name,
-      phone: phone,
-      email: email,
-    };
-    dispatch(editContact(contact));
+    formData.append('avatar', form.elements.avatar.files[0]);
+    formData.append('name', form.elements.name.value);
+    formData.append('phone', form.elements.phone.value);
+    formData.append('email', form.elements.email.value);
+    dispatch(editContact({ formData, id }));
     // form.reset();
   };
 

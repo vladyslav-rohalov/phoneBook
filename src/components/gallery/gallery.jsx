@@ -7,16 +7,6 @@ import {
 import { nanoid } from '@reduxjs/toolkit';
 
 export default function GalleryMobile({ gallery }) {
-  // const images = [];
-
-  // gallery.map(image => {
-  //   return images.push({
-  //     src: image.src,
-  //     width: 320,
-  //     height: 240,
-  //   });
-  // });
-
   return (
     <Container>
       <Gallery>

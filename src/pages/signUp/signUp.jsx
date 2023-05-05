@@ -2,14 +2,18 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import authOperations from 'Redux/auth/operations';
-import { Container } from '../../components/elements/backdropContainer/backdropContainer.styled';
-import { ContainerUtils } from '../../components/elements/utilsContainer/utilsContainer.styled';
-import { Title } from 'components/elements/title/title.styled';
-import { Form, Label, Input } from '../../components/elements/form/form.styled';
-import LinkTo from '../../components/elements/linkTo/linkTo';
-import ButtonCommon from 'components/elements/button/button';
 import { Toaster } from 'react-hot-toast';
 import { notifyError } from 'helpers/notify';
+import {
+  Container,
+  ContainerUtils,
+  Title,
+  Form,
+  Label,
+  Input,
+  LinkTo,
+  ButtonCommon,
+} from 'components/elements';
 
 export default function SignUp() {
   const dispatch = useDispatch();

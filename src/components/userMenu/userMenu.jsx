@@ -12,7 +12,9 @@ import {
 
 export default function UserMenu() {
   const dispatch = useDispatch();
+
   const { user } = useAuth();
+
   return (
     <ContainerUserMenu>
       <Greetings>

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const backdrop = require('./backdrop.webp');
+const backdrop = require('../../../images/backdrop.webp');
 
 export const Container = styled.div`
   position: absolute;

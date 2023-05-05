@@ -2,14 +2,18 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import authOperations from 'Redux/auth/operations';
-import { Form, Label, Input } from '../../components/elements/form/form.styled';
-import { Container } from '../../components/elements/backdropContainer/backdropContainer.styled';
-import { ContainerUtils } from '../../components/elements/utilsContainer/utilsContainer.styled';
-import { Title } from 'components/elements/title/title.styled';
 import { Toaster } from 'react-hot-toast';
 import { notifyError, notifySucces } from 'helpers/notify';
-import ButtonCommon from 'components/elements/button/button';
-import VerificationText from 'components/elements/verificationText/verificationText';
+import {
+  Container,
+  ContainerUtils,
+  Title,
+  Form,
+  Label,
+  Input,
+  ButtonCommon,
+  VerificationText,
+} from 'components/elements/';
 
 export default function Verify() {
   const dispatch = useDispatch();

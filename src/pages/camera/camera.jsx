@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import GalleryMobile from 'components/gallery/gallery';
+import { GalleryMobile } from 'components';
 import {
   Container,
   Video,

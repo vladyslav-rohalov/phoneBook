@@ -1,30 +1,29 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import authOperations from 'Redux/auth/operations';
-import SharedLayout from './sharedLayout/sharedLayout';
-import PrivateRoute from './redirect/privateRoutes';
-import RestrictedRoute from './redirect/restrictedRoutes';
-import VerificationCodeRoute from './redirect/verificationCodeRoutes';
-import VerificationRoute from './redirect/verificationRoute';
+import {
+  SharedLayout,
+  PrivateRoute,
+  RestrictedRoute,
+  VerificationCodeRoute,
+  VerificationRoute,
+} from './components';
 
-const ScreenLock = lazy(() => import('../pages/screenLock/screenLock'));
-const Home = lazy(() => import('../pages/home/home'));
-const Phonebook = lazy(() => import('../pages/phoneBook/phooneBook'));
-const ContactInfo = lazy(() => import('../pages/contactInfo/contactInfo'));
-const EditNewContact = lazy(() => import('../pages/editContact/editContact'));
-const Youtube = lazy(() => import('../pages/youtube/youtube'));
-const Filmoteka = lazy(() => import('../pages/filmoteka/filmoteka'));
-const Camera = lazy(() => import('../pages/camera/camera'));
-const SignIn = lazy(() => import('../pages/signIn/signIn'));
-const SignUp = lazy(() => import('../pages/signUp/signUp'));
-const Verify = lazy(() => import('../pages/verifyEmail/verifyEmail'));
-const AddNewContact = lazy(() =>
-  import('../pages/addNewContact/addNewContact')
-);
-const PageNotFound = lazy(() => import('../pages/404/404'));
+const ScreenLock = lazy(() => import('./pages/screenLock/screenLock'));
+const Home = lazy(() => import('./pages/home/home'));
+const Phonebook = lazy(() => import('./pages/phoneBook/phooneBook'));
+const ContactInfo = lazy(() => import('./pages/contactInfo/contactInfo'));
+const EditNewContact = lazy(() => import('./pages/editContact/editContact'));
+const Youtube = lazy(() => import('./pages/youtube/youtube'));
+const Filmoteka = lazy(() => import('./pages/filmoteka/filmoteka'));
+const Camera = lazy(() => import('./pages/camera/camera'));
+const SignIn = lazy(() => import('./pages/signIn/signIn'));
+const SignUp = lazy(() => import('./pages/signUp/signUp'));
+const Verify = lazy(() => import('./pages/verifyEmail/verifyEmail'));
+const AddNewContact = lazy(() => import('./pages/addNewContact/addNewContact'));
+const PageNotFound = lazy(() => import('./pages/404/404'));
 
 export default function App() {
   const dispatch = useDispatch();

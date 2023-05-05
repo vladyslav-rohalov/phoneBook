@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from 'hooks/useAuth';
-import Time from 'components/time/time';
-import AuthNav from 'components/authNav/authNav';
+import { Time, AuthNav } from 'components';
 import { Locked, UnlockButton, IconFingerPrint } from './screenLock.styled';
 
 export default function ScreenLock() {

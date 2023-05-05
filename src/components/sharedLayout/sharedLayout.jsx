@@ -1,8 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
-import Backdrop from 'components/backdrop/backdrop';
-import UserMenu from 'components/userMenu/userMenu';
+import { Backdrop, UserMenu } from 'components';
 import { useAuth } from 'hooks/useAuth';
 import {
   Frame,
@@ -19,7 +18,7 @@ export default function SharedLayout() {
   const backLinkHref = location.state?.from ?? '/home';
   const { isLoggedIn } = useAuth();
   return (
-    <div>
+    <>
       <Backdrop />
       <Frame>
         <Camera />
@@ -46,6 +45,6 @@ export default function SharedLayout() {
           </Link>
         </BackBar>
       </Frame>
-    </div>
+    </>
   );
 }

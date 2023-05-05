@@ -38,6 +38,21 @@ export const addContact = createAsyncThunk(
   }
 );
 
+export const editContact = createAsyncThunk(
+  'contact/editContact',
+  async ({ formData, id }, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/contacts/${id}`, formData);
+      return { data: response.data, status: response.request.status };
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        status: e.response.status,
+        message: e.response.data.message,
+      });
+    }
+  }
+);
+
 export const delContact = createAsyncThunk(
   'contact/delContact',
   async (id, thunkAPI) => {
@@ -58,25 +73,6 @@ export const updateStatusContact = createAsyncThunk(
   async ({ id, favorite }, thunkAPI) => {
     try {
       const response = await axios.patch(`/contacts/${id}/favorite`, favorite);
-      return { data: response.data, status: response.request.status };
-    } catch (e) {
-      return thunkAPI.rejectWithValue({
-        status: e.response.status,
-        message: e.response.data.message,
-      });
-    }
-  }
-);
-
-export const editContact = createAsyncThunk(
-  'contact/editContact',
-  async ({ id, name, phone, email }, thunkAPI) => {
-    try {
-      const response = await axios.put(`/contacts/${id}`, {
-        name,
-        phone,
-        email,
-      });
       return { data: response.data, status: response.request.status };
     } catch (e) {
       return thunkAPI.rejectWithValue({

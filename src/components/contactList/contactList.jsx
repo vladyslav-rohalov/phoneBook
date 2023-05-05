@@ -1,46 +1,53 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import {
-  selectContacts,
-  selectIsLoading,
-  // selectError,
-  selectFilteredContacts,
-} from 'Redux/Selectors';
+import { useContacts } from 'hooks/useContacts';
 import { useEffect } from 'react';
 import { fetchContacts } from 'Redux/contacts/Operations';
+import { SkeletonList } from 'components';
+import { Favorite } from 'components/elements';
 import {
   ContactsContainer,
   List,
   ListItem,
   LinkStyled,
+  ContainerAvatar,
+  Avatar,
 } from './contactList.styled';
-// import Error from 'components/error/error';
-import { SkeletonList } from 'components/skeleton/skeleton';
 
 export default function ContactList() {
-  const items = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+  const { contacts, isLoading, filtredContacts } = useContacts();
+
   const dispatch = useDispatch();
-  const filtredContacts = useSelector(selectFilteredContacts);
+
   const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const handleFavorite = () => {
+    // const favorite = { favorite: !favorite };
+    // dispatch(updateStatusContact({ id, favorite }));
+  };
+
   return (
     <ContactsContainer>
       {isLoading && <SkeletonList />}
-      {/* {error && <Error />} */}
-      {items.length > 0 && (
+      {contacts.length > 0 && (
         <List>
-          {filtredContacts.map(({ _id, name }) => {
+          {filtredContacts.map(({ _id, name, avatarURL, favorite }) => {
             return (
               <ListItem key={_id}>
+                <ContainerAvatar>
+                  <Avatar src={avatarURL} alt="avatar" />
+                </ContainerAvatar>
                 <LinkStyled to={`/phonebook/${_id}`} state={{ from: location }}>
                   {name}
                 </LinkStyled>
+                <Favorite
+                  favorite={favorite}
+                  onFavoriteClick={handleFavorite}
+                />
               </ListItem>
             );
           })}

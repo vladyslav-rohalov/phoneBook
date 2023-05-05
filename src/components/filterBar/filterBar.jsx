@@ -12,6 +12,7 @@ import {
 
 export default function FilterBar() {
   const dispatch = useDispatch();
+
   const location = useLocation();
 
   return (

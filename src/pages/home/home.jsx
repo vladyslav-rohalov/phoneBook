@@ -1,6 +1,5 @@
-import Time from 'components/time/time';
-import Navigation from 'components/navigation/navigation';
-import { Container } from '../../components/elements/backdropContainer/backdropContainer.styled';
+import { Time, Navigation } from 'components';
+import { Container } from 'components/elements';
 
 export default function Home() {
   return (
