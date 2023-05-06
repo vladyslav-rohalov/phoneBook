@@ -21,7 +21,9 @@ export default function SignIn() {
   const { error } = useAuth();
 
   useEffect(() => {
-    if (error !== null && error.status >= 400) notifyError(error.message);
+    if (error === null) {
+      return;
+    } else notifyError(error.message);
   }, [error]);
 
   const handleSubmit = e => {
@@ -41,11 +43,18 @@ export default function SignIn() {
   return (
     <Container>
       <ContainerUtils>
-        <Toaster />
+        {error?.message !== 'Not authorized' &&
+          error !== 'Unable to fetch user' && <Toaster />}
         <Title>Sign In</Title>
         <Form onSubmit={handleSubmit}>
           <Label>
-            <Input type="email" name="email" placeholder="Email" required />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              autoComplete="email"
+            />
           </Label>
           <Label>
             <Input
@@ -53,6 +62,7 @@ export default function SignIn() {
               name="password"
               placeholder="Password"
               required
+              autoComplete="current-password"
             />
           </Label>
           <ButtonCommon titleButton="Sign In" />

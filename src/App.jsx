@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import authOperations from 'Redux/auth/operations';
@@ -112,6 +112,7 @@ export default function App() {
             }
           />
           <Route path="404" element={<PageNotFound />} />
+          <Route path="*" element={<Navigate to={'404'} />} />
         </Route>
       </Routes>
     )

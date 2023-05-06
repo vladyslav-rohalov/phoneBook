@@ -21,7 +21,9 @@ export default function SignUp() {
   const { error } = useAuth();
 
   useEffect(() => {
-    if (error !== null && error.status >= 400) notifyError(error.message);
+    if (error === null) {
+      return;
+    } else notifyError(error.message);
   }, [error]);
 
   const handleLocalStorage = e => {
@@ -47,7 +49,8 @@ export default function SignUp() {
   return (
     <Container>
       <ContainerUtils>
-        <Toaster />
+        {error?.message !== 'Not authorized' &&
+          error !== 'Unable to fetch user' && <Toaster />}
         <Title>Sign Up</Title>
         <Form onSubmit={handleSubmit}>
           <Label>
@@ -57,6 +60,7 @@ export default function SignUp() {
               placeholder="Name"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
+              autoComplete="name"
             />
           </Label>
           <Label>
@@ -67,6 +71,7 @@ export default function SignUp() {
               pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
               title="The email address must be set to letters and contain @, it must not contain spaces, dashes, or parentheses. "
               required
+              autoComplete="email"
               onChange={handleLocalStorage}
             />
           </Label>
@@ -75,7 +80,8 @@ export default function SignUp() {
               type="password"
               name="password"
               placeholder="Password"
-              // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+              autoComplete="current-password"
               title="The password length must be greater than or equal to 8 and less or equal to 16, at least one lowercase letter & one uppercase letter, at least one numeric & one special symbol(!@#$%^&*=+-_) "
               required
             />

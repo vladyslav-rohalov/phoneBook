@@ -6,6 +6,7 @@ import { Title } from './title/title.styled';
 import { ContainerUtils } from './utilsContainer/utilsContainer.styled';
 import VerificationText from './verificationText/verificationText';
 import Favorite from './IconFavorite/IconFavorite';
+import { SmallText } from './smallText/smallText.styled';
 
 export {
   Container,
@@ -14,6 +15,7 @@ export {
   Input,
   Title,
   ContainerUtils,
+  SmallText,
   Favorite,
   LinkTo,
   ButtonCommon,

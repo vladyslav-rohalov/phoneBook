@@ -40,6 +40,9 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = { status: null, message: null };
       state.items = action.payload.data;
+      state.items.sort(
+        (a, b) => b.favorite - a.favorite || a.name.localeCompare(b.name)
+      );
       state.status = action.payload.status;
     },
     [addContact.fulfilled](state, action) {
@@ -53,7 +56,7 @@ const contactsSlice = createSlice({
       state.status = action.payload.status;
       state.error = { status: null, message: null };
       const index = state.items.findIndex(
-        contact => contact.id === action.payload.data.id
+        contact => contact._id === action.payload.data._id
       );
       state.items.splice(index, 1, action.payload.data);
     },
@@ -61,8 +64,9 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.status = action.payload.status;
       state.error = { status: null, message: null };
+
       const index = state.items.findIndex(
-        contact => contact.id === action.payload.data.id
+        contact => contact._id === action.payload.data._id
       );
       state.items.splice(index, 1, action.payload.data);
     },
@@ -70,7 +74,7 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = { status: null, message: null };
       const index = state.items.findIndex(
-        contact => contact.id === action.payload.data.id
+        contact => contact._id === action.payload.data._id
       );
       state.items.splice(index, 1);
     },

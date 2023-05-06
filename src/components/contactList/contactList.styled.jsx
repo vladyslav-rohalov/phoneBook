@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export const ContactsContainer = styled.div`
   width: calc(100% - 1.25em);
-  height: 100%;
   margin: 0.5em auto 2em;
   border-radius: 0.5em;
 `;
@@ -32,24 +31,34 @@ export const ListItem = styled.li`
   &:hover,
   focus {
     font-weight: 500;
+    box-shadow: 0 0 0.5em #333;
+    border-radius: 4px;
   }
 `;
 
 export const LinkStyled = styled(Link)`
   display: flex;
+  justify-content: space-between;
   width: 100%;
   text-decoration: none;
   color: #000000;
 `;
 
 export const ContainerAvatar = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
   width: 32px;
   height: 32px;
 `;
 
 export const Avatar = styled.img`
   display: block;
+  object-fit: cover;
+  aspect-ratio: 1;
   width: 32px;
   height: 32px;
   border-radius: 50%;
 `;
+
+export const StyledP = styled.p``;

@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
 import { AiFillStar } from 'react-icons/ai';
 
-export const ButtonFavorite = styled.button`
+export const ContainerFavorite = styled.div`
   height: 32px;
   width: 32px;
   border: none;
-  cursor: pointer;
   background-color: transparent;
   padding: 0;
 `;

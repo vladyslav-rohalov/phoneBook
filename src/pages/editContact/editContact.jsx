@@ -24,7 +24,7 @@ export default function EditContact() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (error.status >= 400) notifyError(error.message);
+    if (error?.status >= 400) notifyError(error.message);
     if (status === 201) {
       notifySucces('Contact updated successfully');
       setTimeout(() => {
@@ -42,7 +42,6 @@ export default function EditContact() {
     formData.append('phone', form.elements.phone.value);
     formData.append('email', form.elements.email.value);
     dispatch(editContact({ formData, id }));
-    // form.reset();
   };
 
   const handlePick = () => {
@@ -51,7 +50,7 @@ export default function EditContact() {
 
   return (
     <Container>
-      <Toaster />
+      {error?.message !== null && <Toaster />}
       {contact && (
         <ContactAddEdit
           title="Edit contact"

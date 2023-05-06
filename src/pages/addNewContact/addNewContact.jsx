@@ -15,7 +15,7 @@ export default function AddNewContact() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (error.status >= 400) notifyError(error.message);
+    if (error?.status >= 400) notifyError(error.message);
     if (status === 201) {
       notifySucces('new contact added');
       setTimeout(() => {

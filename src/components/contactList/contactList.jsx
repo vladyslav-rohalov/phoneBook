@@ -12,6 +12,7 @@ import {
   LinkStyled,
   ContainerAvatar,
   Avatar,
+  StyledP,
 } from './contactList.styled';
 
 export default function ContactList() {
@@ -25,11 +26,6 @@ export default function ContactList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const handleFavorite = () => {
-    // const favorite = { favorite: !favorite };
-    // dispatch(updateStatusContact({ id, favorite }));
-  };
-
   return (
     <ContactsContainer>
       {isLoading && <SkeletonList />}
@@ -38,16 +34,14 @@ export default function ContactList() {
           {filtredContacts.map(({ _id, name, avatarURL, favorite }) => {
             return (
               <ListItem key={_id}>
-                <ContainerAvatar>
-                  <Avatar src={avatarURL} alt="avatar" />
-                </ContainerAvatar>
                 <LinkStyled to={`/phonebook/${_id}`} state={{ from: location }}>
-                  {name}
+                  <ContainerAvatar>
+                    <Avatar src={avatarURL} alt="avatar" />
+                    <StyledP>{name}</StyledP>
+                  </ContainerAvatar>
+
+                  <Favorite favorite={favorite} />
                 </LinkStyled>
-                <Favorite
-                  favorite={favorite}
-                  onFavoriteClick={handleFavorite}
-                />
               </ListItem>
             );
           })}

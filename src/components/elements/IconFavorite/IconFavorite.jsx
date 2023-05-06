@@ -1,12 +1,12 @@
-import { ButtonFavorite, IconFavorite } from './IconFavorite.styled';
+import { ContainerFavorite, IconFavorite } from './IconFavorite.styled';
 
-export default function Favorite({ favorite, onFavoriteClick }) {
+export default function Favorite({ favorite }) {
   const fill = () => {
     return favorite ? '#C9AC03' : '#8C8C89';
   };
   return (
-    <ButtonFavorite type="button" onClick={onFavoriteClick}>
+    <ContainerFavorite type="button">
       <IconFavorite fill={fill()} />
-    </ButtonFavorite>
+    </ContainerFavorite>
   );
 }

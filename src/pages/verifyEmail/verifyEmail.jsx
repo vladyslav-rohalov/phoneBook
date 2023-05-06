@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from 'hooks/useAuth';
 import authOperations from 'Redux/auth/operations';
 import { Toaster } from 'react-hot-toast';
@@ -13,12 +13,20 @@ import {
   Input,
   ButtonCommon,
   VerificationText,
+  SmallText,
 } from 'components/elements/';
 
 export default function Verify() {
+  const [resendButton, setResendButton] = useState(true);
   const dispatch = useDispatch();
   const email = JSON.parse(localStorage.getItem('email'));
   const { error, message } = useAuth();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setResendButton(false);
+    }, 30000);
+  }, []);
 
   useEffect(() => {
     if (error !== null && error.status >= 400) notifyError(error.message);
@@ -60,12 +68,14 @@ export default function Verify() {
               required
             />
           </Label>
-          <ButtonCommon titleButton="Send" />
+          <ButtonCommon titleButton="Confirm" />
         </Form>
-        <ButtonCommon titleButton="Resend code" handleClick={resendVerify} />
-        {/* <button type="button" onClick={resendVerify}>
-          Resend verify
-        </button> */}
+        <SmallText>Will become active in 60 seconds</SmallText>
+        <ButtonCommon
+          titleButton="Resend code"
+          handleClick={resendVerify}
+          toggleButton={resendButton}
+        />
       </ContainerUtils>
     </Container>
   );
