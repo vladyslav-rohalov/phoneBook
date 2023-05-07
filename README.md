@@ -1,5 +1,6 @@
 <h1>Phonebook APP</h1>
 <h2>Frontend</h2>
+<h2> <a href="https://github.com/vladyslav-rohalov/phonebook-backend">Backend</a> </h2>
 <p>This repository is the frontend part of my project and is a simple phonebook web
 application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> and password: <strong>Qwerty123!</strong>
 </p>
@@ -27,8 +28,9 @@ application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> a
 <h3>Usage</h3>
 <ul>
 <li>
-    <p>First, you need to register or log in to the application. To register, use your name, email, and password. After that you will receive a confirmation email with a code. In the window that opens, you must enter the code, and then you can enter your username and password. After that you will log in.
-    </p>
+   <h4>Register and Log In</h4>
+   <p>First, you need to register or log in to the application. To register, use your name, email, and password. After that you will receive a confirmation email with a code. In the window that opens, you must enter the code, and then you can enter your username and password. After that you will log in.
+   </p>
 </li>
 <li>
   <h4>Phonebook</h4>
@@ -52,7 +54,7 @@ application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> a
   <p>There are three buttons for navigation, home, back and lock the phone.</p>
 </li>
 <li>
-  <h4>Log out</h4>
+  <h4>Log Out</h4>
   <p>To log out the app, press the button in the upper right corner.</p>
 </li>
 <li>
