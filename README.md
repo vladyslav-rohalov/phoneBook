@@ -1,4 +1,4 @@
-<h1>Phonebook APP</h1>.
+<h1>Phonebook APP</h1>
 <h2>Frontend</h2>
 <p>This repository is the frontend part of my project and is a simple phonebook web
 application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> and password: <strong>Qwerty123!</strong>
