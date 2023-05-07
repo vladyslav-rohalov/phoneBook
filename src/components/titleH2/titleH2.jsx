@@ -1,8 +1,7 @@
-import { useSelector } from 'react-redux';
-import { selectContacts } from 'Redux/Selectors';
+import { useContacts } from 'hooks/useContacts';
 import { TitleH2Styled } from './titleH2.styled';
 
 export default function TitleH2() {
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useContacts();
   return <TitleH2Styled>Contacts ({contacts.length})</TitleH2Styled>;
 }

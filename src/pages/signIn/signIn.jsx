@@ -21,9 +21,10 @@ export default function SignIn() {
   const { error } = useAuth();
 
   useEffect(() => {
+    console.log(error);
     if (error === null) {
       return;
-    } else notifyError(error.message);
+    } else notifyError(error?.message);
   }, [error]);
 
   const handleSubmit = e => {

@@ -6,9 +6,6 @@ export default function VerificationRoute({
   redirectTo = '/signin',
 }) {
   const { isVerify } = useAuth();
-  //   console.log(
-  //     `VerificationRoute isVerify ###${isVerify}### redirect to /signin`
-  //   );
   const location = useLocation();
   return isVerify ? (
     <Navigate to={location.state?.from ?? redirectTo} />

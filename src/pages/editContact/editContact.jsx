@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useContacts } from 'hooks/useContacts';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchContacts, editContact } from 'Redux/contacts/Operations';
+import { fetchContacts, editContact } from 'Redux/contacts/operations';
 import { useParams } from 'react-router-dom';
 import { Container } from 'components/elements/';
 import { Toaster } from 'react-hot-toast';

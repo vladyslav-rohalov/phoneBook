@@ -6,7 +6,7 @@ import {
   fetchContacts,
   delContact,
   updateStatusContact,
-} from 'Redux/contacts/Operations';
+} from 'Redux/contacts/operations';
 import { Container } from '../../components/elements';
 import { IconBar } from 'components';
 import {

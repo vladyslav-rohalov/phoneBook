@@ -7,9 +7,6 @@ export default function RestrictedRoute({
 }) {
   const { isLoggedIn } = useAuth();
   const location = useLocation();
-  // console.log(
-  //   `restrictedRoute isLoggedIn ###${isLoggedIn}### redirect to Home`
-  // );
   return isLoggedIn ? (
     <Navigate to={location.state?.from ?? redirectTo} />
   ) : (
