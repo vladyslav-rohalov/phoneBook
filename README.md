@@ -4,7 +4,6 @@
 application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> and password: <strong>Qwerty123!</strong>
 </p>
 <h3>Languages and Tools:</h3>
-
 <a href="https://react.dev/" target="_blank" rel="noreferrer">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="html5" width="40" height="40"/>
     <p>ReactJS, the official React build was used as the basis</p>
