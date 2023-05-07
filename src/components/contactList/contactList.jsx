@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useContacts } from 'hooks/useContacts';
 import { useEffect } from 'react';
-import { fetchContacts } from 'Redux/contacts/operations';
+import contactsOperations from 'Redux/contacts/operations';
 import { SkeletonList } from 'components';
 import { Favorite } from 'components/elements';
 import {
@@ -23,7 +23,7 @@ export default function ContactList() {
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
   return (

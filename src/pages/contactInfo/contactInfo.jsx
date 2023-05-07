@@ -2,11 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useContacts } from 'hooks/useContacts';
 import { useEffect } from 'react';
-import {
-  fetchContacts,
-  delContact,
-  updateStatusContact,
-} from 'Redux/contacts/operations';
+import contactsOperations from 'Redux/contacts/operations';
 import { Container } from '../../components/elements';
 import { IconBar } from 'components';
 import {
@@ -24,12 +20,12 @@ export default function ContactInfo() {
   const contact = contacts.find(item => item._id === id);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
   const handleFavorite = () => {
     const favorite = { favorite: !contact.favorite };
-    dispatch(updateStatusContact({ id, favorite }));
+    dispatch(contactsOperations.updateStatusContact({ id, favorite }));
   };
 
   return (
@@ -43,7 +39,7 @@ export default function ContactInfo() {
             <ContactPhoneMail>{contact.email}</ContactPhoneMail>
             <IconBar
               contact={contact}
-              onDelClick={() => dispatch(delContact(id))}
+              onDelClick={() => dispatch(contactsOperations.delContact(id))}
               onFavoriteClick={handleFavorite}
               id={id}
             />

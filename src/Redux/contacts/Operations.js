@@ -4,7 +4,7 @@ import { SERVER_URL } from 'constants/constants';
 
 axios.defaults.baseURL = SERVER_URL;
 
-export const fetchContacts = createAsyncThunk(
+const fetchContacts = createAsyncThunk(
   '/contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
@@ -19,7 +19,7 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-export const addContact = createAsyncThunk(
+const addContact = createAsyncThunk(
   'contact/addContact',
   async (formData, thunkAPI) => {
     try {
@@ -38,7 +38,7 @@ export const addContact = createAsyncThunk(
   }
 );
 
-export const editContact = createAsyncThunk(
+const editContact = createAsyncThunk(
   'contact/editContact',
   async ({ formData, id }, thunkAPI) => {
     try {
@@ -53,7 +53,7 @@ export const editContact = createAsyncThunk(
   }
 );
 
-export const delContact = createAsyncThunk(
+const delContact = createAsyncThunk(
   'contact/delContact',
   async (id, thunkAPI) => {
     try {
@@ -68,7 +68,7 @@ export const delContact = createAsyncThunk(
   }
 );
 
-export const updateStatusContact = createAsyncThunk(
+const updateStatusContact = createAsyncThunk(
   'contact/updateStatusContact',
   async ({ id, favorite }, thunkAPI) => {
     try {
@@ -82,3 +82,13 @@ export const updateStatusContact = createAsyncThunk(
     }
   }
 );
+
+const contactsOperations = {
+  fetchContacts,
+  addContact,
+  editContact,
+  delContact,
+  updateStatusContact,
+};
+
+export default contactsOperations;

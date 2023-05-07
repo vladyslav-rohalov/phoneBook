@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useContacts } from 'hooks/useContacts';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchContacts, editContact } from 'Redux/contacts/operations';
+import contactsOperations from 'Redux/contacts/operations';
 import { useParams } from 'react-router-dom';
 import { Container } from 'components/elements/';
 import { Toaster } from 'react-hot-toast';
@@ -20,7 +20,7 @@ export default function EditContact() {
   const avatarPicker = useRef(null);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function EditContact() {
     formData.append('name', form.elements.name.value);
     formData.append('phone', form.elements.phone.value);
     formData.append('email', form.elements.email.value);
-    dispatch(editContact({ formData, id }));
+    dispatch(contactsOperations.editContact({ formData, id }));
   };
 
   const handlePick = () => {

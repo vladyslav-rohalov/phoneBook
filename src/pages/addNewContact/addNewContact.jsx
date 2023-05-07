@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { useContacts } from 'hooks/useContacts';
 import { useNavigate } from 'react-router-dom';
-import { addContact } from 'Redux/contacts/operations';
+import contactsOperations from 'Redux/contacts/operations';
 import { Container } from 'components/elements';
 import { Toaster } from 'react-hot-toast';
 import { notifyError, notifySucces } from 'helpers/notify';
@@ -32,8 +32,7 @@ export default function AddNewContact() {
     formData.append('name', form.elements.name.value);
     formData.append('phone', form.elements.phone.value);
     formData.append('email', form.elements.email.value);
-    dispatch(addContact(formData));
-    // form.reset();
+    dispatch(contactsOperations.addContact(formData));
   };
 
   const handlePick = () => {
