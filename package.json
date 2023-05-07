@@ -2,7 +2,7 @@
   "name": "phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vladyslav-rohalov.github.io/phonebook/",
+  "homepage": "https://vladyslav-rohalov.github.io/phonebook-frontend/",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@redux-devtools/extension": "^3.2.5",
