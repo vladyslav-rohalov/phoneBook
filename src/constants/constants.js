@@ -1,1 +1,2 @@
-export const SERVER_URL = 'http://3.77.179.38/api/phonebook/';
+export const SERVER_URL =
+  'https://vladyslav-rohalov-phonebook-backend.onrender.com/api/phonebook/';
