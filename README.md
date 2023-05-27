@@ -4,7 +4,7 @@
 <p>This repository is the frontend part of my project and is a simple phonebook web
 application. For a quick login use login: <strong>v.rohalov@gmail.com</strong> and password: <strong>Qwerty123!</strong>
 </p>
-<p>Also the backend is posted here http://[vladyslav-rohalov-phonebook-backend.onrender.com](http://3.77.179.38/)</p>
+<p>Also the backend is posted here http://3.77.179.38/</p>
 <h3>Languages and Tools</h3>
 <ul>
     <li>
